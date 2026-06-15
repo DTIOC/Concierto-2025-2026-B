@@ -130,7 +130,15 @@
             color: var(--text-secondary);
             font-style: italic;
             letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        .director-name {
+            font-size: 1.15rem;
+            color: var(--accent-color);
+            font-weight: 700;
             margin-bottom: 25px;
+            font-family: 'Playfair Display', serif;
         }
 
         .event-details {
@@ -167,7 +175,7 @@
             width: 100%;
             height: auto;
             max-height: 500px;
-            object-fit: contain; /* ← CAMBIO CLAVE: muestra la imagen COMPLETA */
+            object-fit: contain;
             display: block;
             border-radius: 6px;
         }
@@ -431,6 +439,10 @@
             .banner-image {
                 max-height: 400px;
             }
+
+            .director-name {
+                font-size: 1.05rem;
+            }
         }
     </style>
 </head>
@@ -450,6 +462,7 @@
         <header>
             <h1>Concierto de Fin de Cursos</h1>
             <p class="subtitle">Semestre 2025 - 2026 B</p>
+            <p class="director-name">DTI Óscar Cárdenas</p>
             
             <div class="event-details">
                 <p><strong>📅 Fecha:</strong> Viernes 19 de junio de 2026</p>
