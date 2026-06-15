@@ -17,7 +17,7 @@
         /* --- ESTILOS GENERALES --- */
         :root {
             --bg-color: #121212;
-            --card-bg: rgba(30, 30, 30, 0.85);
+            --card-bg: rgba(25, 25, 25, 0.70); /* ← MÁS TRANSPARENTE (70%) */
             --text-primary: #f5f5f5;
             --text-secondary: #b0b0b0;
             --accent-color: #d4af37;
@@ -40,7 +40,7 @@
             min-height: 100vh;
         }
 
-        /* --- FONDO CON IMAGEN SUTIL --- */
+        /* --- FONDO CON IMAGEN VISIBLE --- */
         body::before {
             content: "";
             position: fixed;
@@ -52,28 +52,28 @@
             background-size: cover;
             background-position: center top;
             background-attachment: fixed;
-            opacity: 0.20;
+            opacity: 0.35; /* ← MÁS VISIBLE (35%) */
             z-index: -1;
-            filter: blur(2px);
+            filter: blur(2px); /* ← DESENFOQUE REDUCIDO */
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
             background-color: var(--card-bg);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(4px); /* ← DESENFOQUE DEL CONTENEDOR REDUCIDO */
+            -webkit-backdrop-filter: blur(4px);
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
             overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         /* --- BOTÓN DE DESCARGA PDF --- */
         .download-section {
             text-align: center;
             padding: 20px;
-            background: linear-gradient(to bottom, rgba(26, 26, 26, 0.9), var(--card-bg));
+            background: linear-gradient(to bottom, rgba(26, 26, 26, 0.8), var(--card-bg));
             border-bottom: 2px solid var(--accent-color);
         }
 
@@ -122,7 +122,7 @@
             color: var(--accent-color);
             margin-bottom: 15px;
             line-height: 1.2;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
 
         .subtitle {
@@ -134,7 +134,7 @@
         }
 
         .event-details {
-            background-color: rgba(212, 175, 55, 0.1);
+            background-color: rgba(212, 175, 55, 0.15);
             border-left: 4px solid var(--accent-color);
             border-right: 4px solid var(--accent-color);
             padding: 20px;
@@ -186,7 +186,7 @@
             align-items: baseline;
             margin-bottom: 15px;
             padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .piece:last-child {
@@ -224,18 +224,18 @@
             color: var(--accent-color);
             margin: 20px 0;
             padding: 15px;
-            background-color: rgba(212, 175, 55, 0.1);
+            background-color: rgba(212, 175, 55, 0.15);
             border-radius: 8px;
             border: 1px solid var(--accent-color);
             font-style: italic;
         }
 
         .group-performers {
-            background-color: rgba(37, 37, 37, 0.6);
+            background-color: rgba(37, 37, 37, 0.5);
             padding: 25px;
             border-radius: 8px;
             margin-top: 30px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .group-performers h3 {
@@ -254,7 +254,7 @@
             margin-bottom: 12px;
             display: flex;
             flex-direction: column;
-            border-bottom: 1px dashed rgba(255, 255, 255, 0.1);
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
             padding-bottom: 8px;
         }
 
@@ -278,8 +278,8 @@
         footer {
             text-align: center;
             padding: 30px 20px;
-            background-color: rgba(26, 26, 26, 0.9);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(26, 26, 26, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
             font-size: 0.9rem;
             color: var(--text-secondary);
         }
@@ -319,7 +319,7 @@
         .closing-info {
             margin-top: 30px;
             padding: 20px;
-            background-color: rgba(212, 175, 55, 0.1);
+            background-color: rgba(212, 175, 55, 0.15);
             border-radius: 8px;
             border: 1px solid var(--accent-color);
         }
