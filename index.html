@@ -50,7 +50,7 @@
             height: 100%;
             background-image: url('portada.jpg');
             background-size: cover;
-            background-position: center top;
+            background-position: center center;
             background-attachment: fixed;
             opacity: 0.35;
             z-index: -1;
@@ -153,15 +153,37 @@
             color: var(--accent-color);
         }
 
-        /* --- IMAGEN EXPLÍCITA (BANNER) --- */
+        /* --- IMAGEN EXPLÍCITA COMPLETA (BANNER) --- */
+        .banner-wrapper {
+            background-color: rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            margin-top: 10px;
+        }
+
         .banner-image {
             width: 100%;
-            max-height: 350px;
-            object-fit: cover;
-            border-radius: 8px;
+            height: auto;
+            max-height: 500px;
+            object-fit: contain; /* ← CAMBIO CLAVE: muestra la imagen COMPLETA */
+            display: block;
+            border-radius: 6px;
+        }
+
+        .image-credits {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            font-style: italic;
             margin-top: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            text-align: right;
+            padding: 0 5px;
+        }
+
+        .image-credits strong {
+            color: var(--accent-color);
+            font-style: normal;
         }
 
         /* --- PROGRAMA --- */
@@ -407,7 +429,7 @@
             }
             
             .banner-image {
-                max-height: 250px; /* Un poco más pequeña en celular para no ocupar toda la pantalla */
+                max-height: 400px;
             }
         }
     </style>
@@ -435,8 +457,11 @@
                 <p><strong>📍 Lugar:</strong> Salón de Música</p>
             </div>
 
-            <!-- IMAGEN EXPLÍCITA COMO BANNER -->
-            <img src="portada.jpg" alt="Imagen alusiva al Concierto de Fin de Cursos" class="banner-image">
+            <!-- IMAGEN COMPLETA CON CRÉDITOS -->
+            <div class="banner-wrapper">
+                <img src="portada.jpg" alt="Guitarrista (2011) - Okeybabs" class="banner-image">
+                <p class="image-credits"><strong>Imagen:</strong> Guitarrista (2011) — Okeybabs</p>
+            </div>
         </header>
 
         <main>
@@ -535,7 +560,7 @@
                         <span class="instrument-players">Andrea Roblero López y Lluvia Abigail Vázquez Rojas.</span>
                     </li>
                     <li>
-                        <span class="instrument-name">🎛️ Teclados:</span>
+                        <span class="instrument-name">️ Teclados:</span>
                         <span class="instrument-players">Delia Monserrath Pacheco Vázquez y Wendy Velázquez Cerón.</span>
                     </li>
                 </ul>
