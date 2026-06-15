@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concierto de Fin de Cursos 2025-2026 B</title>
+    
+    <!-- Fuentes elegantes de Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Librería html2pdf para generar PDF -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        :root {
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-primary: #f5f5f5;
+            --text-secondary: #b0b0b0;
+            --accent-color: #d4af37; /* Dorado elegante */
+            --accent-hover: #f3cf55;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            border: 1px solid #333;
+        }
+
+        /* --- BOTÓN DE DESCARGA PDF --- */
+        .download-section {
+            text-align: center;
+            padding: 20px;
+            background: linear-gradient(to bottom, #1a1a1a, var(--card-bg));
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: var(--accent-color);
+            color: #121212;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-family: 'Lato', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+            text-decoration: none;
+        }
+
+        .btn-download:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-download:active {
+            transform: translateY(0);
+        }
+
+        .btn-download svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* --- PORTADA --- */
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+
+        .concert-image {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            font-style: italic;
+            letter-spacing: 1px;
+        }
+
+        /* --- PROGRAMA --- */
+        main {
+            padding: 30px 25px;
+        }
+
+        h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--text-primary);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 10px;
+        }
+
+        .piece {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #333;
+        }
+
+        .piece:last-child {
+            border-bottom: none;
+        }
+
+        .piece-info {
+            flex: 1;
+        }
+
+        .piece-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }
+
+        .piece-composer {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        .performer {
+            text-align: right;
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            max-width: 40%;
+            font-style: italic;
+        }
+
+        .group-performers {
+            background-color: #252525;
+            padding: 25px;
+            border-radius: 8px;
+            margin-top: 30px;
+            border: 1px solid #333;
+        }
+
+        .group-performers h3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+
+        .instrument-list {
+            list-style: none;
+        }
+
+        .instrument-list li {
+            margin-bottom: 12px;
+            display: flex;
+            flex-direction: column;
+            border-bottom: 1px dashed #444;
+            padding-bottom: 8px;
+        }
+
+        .instrument-list li:last-child {
+            border-bottom: none;
+        }
+
+        .instrument-name {
+            font-weight: 700;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+        }
+
+        .instrument-players {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            margin-top: 2px;
+        }
+
+        /* --- FOOTER Y NOTAS --- */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: #1a1a1a;
+            border-top: 1px solid #333;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .footnote {
+            font-style: italic;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .credits {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 20px;
+        }
+
+        /* --- RESPONSIVE PARA CELULARES --- */
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .piece {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .performer {
+                text-align: left;
+                max-width: 100%;
+                margin-top: 5px;
+                font-size: 0.9rem;
+            }
+
+            .instrument-list li {
+                margin-bottom: 15px;
+            }
+
+            .btn-download {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="contenido-pdf">
+        <!-- SECCIÓN DE DESCARGA -->
+        <div class="download-section">
+            <button class="btn-download" onclick="descargarPDF()">
+                <!-- Icono de descarga SVG -->
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Descargar Programa en PDF
+            </button>
+        </div>
+
+        <header>
+            <!-- IMPORTANTE: Sube tu imagen a GitHub con el nombre exacto "portada.jpg" -->
+            <img src="portada.jpg" alt="Imagen alusiva al Concierto de Fin de Cursos" class="concert-image">
+            <h1>Concierto de Fin de Cursos</h1>
+            <p class="subtitle">Semestre 2025 - 2026 B</p>
+        </header>
+
+        <main>
+            <h2>PROGRAMA</h2>
+
+            <div class="section-title">I. Composiciones</div>
+            
+            <div class="piece">
+                <div class="piece-info">
+                    <div class="piece-title">Calentamiento Global</div>
+                    <div class="piece-composer">Aiko Denef Azcárraga Méndez</div>
+                </div>
+            </div>
+
+            <div class="piece">
+                <div class="piece-info">
+                    <div class="piece-title">Los Videojuegos</div>
+                    <div class="piece-composer">Abraham Acosta Martínez</div>
+                </div>
+            </div>
+
+            <div class="piece">
+                <div class="piece-info">
+                    <div class="piece-title">Amor</div>
+                    <div class="piece-composer">Delia Monserrat Pacheco Vázquez</div>
+                </div>
+            </div>
+
+            <div class="piece">
+                <div class="piece-info">
+                    <div class="piece-title">Nostalgia de otoño</div>
+                    <div class="piece-composer">Leonardo David Nava Madrid</div>
+                </div>
+            </div>
+
+            <div class="piece">
+                <div class="piece-info">
+                    <div class="piece-title">I.A.R.G</div>
+                    <div class="piece-composer">Ilze Guadalupe Sánchez Barrera</div>
+                </div>
+            </div>
+
+            <div class="piece">
+                <div class="piece-info">
+                    <div class="piece-title">II. Alley Cat</div>
+                    <div class="piece-composer">Bent Fabric</div>
+                </div>
+            </div>
+
+            <div class="piece">
+                <div class="piece-info">
+                    <div class="piece-title">III. *Pink Panther Theme</div>
+                    <div class="piece-composer">Henry Mancini</div>
+                </div>
+            </div>
+
+            <div class="piece">
+                <div class="piece-info">
+                    <div class="piece-title">IV. El Cadáver de la Novia</div>
+                    <div class="piece-composer">Danny Elfman</div>
+                </div>
+                <div class="performer">Interpreta:<br>Pamela Viridiana Herrera Rosales, piano.</div>
+            </div>
+
+            <div class="piece">
+                <div class="piece-info">
+                    <div class="piece-title">V. *Devuélveme a mi Chica</div>
+                    <div class="piece-composer">David Summers (Hombres G)</div>
+                </div>
+            </div>
+
+            <div class="group-performers">
+                <h3>Interpretan el grupo 611 y S613 del curso de música 2:</h3>
+                <ul class="instrument-list">
+                    <li>
+                        <span class="instrument-name">🥁 Batería:</span>
+                        <span class="instrument-players">Ilze Guadalupe Sánchez Barrera.</span>
+                    </li>
+                    <li>
+                        <span class="instrument-name">🎸 Guitarra acústica:</span>
+                        <span class="instrument-players">Ángel Gabriel De Jesús López, Leonardo David Nava Madrid y Natán Coahuila Solano.</span>
+                    </li>
+                    <li>
+                        <span class="instrument-name">🎸 Guitarra eléctrica:</span>
+                        <span class="instrument-players">Abraham Acosta Martínez Martínez.</span>
+                    </li>
+                    <li>
+                        <span class="instrument-name">🎹 Metalófonos:</span>
+                        <span class="instrument-players">Aiko Denef Azcárraga Méndez y Lizbeth Marín Luna.</span>
+                    </li>
+                    <li>
+                        <span class="instrument-name">🎹 Piano:</span>
+                        <span class="instrument-players">Andrea Roblero López y Lluvia Abigail Vázquez Rojas.</span>
+                    </li>
+                    <li>
+                        <span class="instrument-name">🎛️ Teclados:</span>
+                        <span class="instrument-players">Delia Monserrath Pacheco Vázquez y Wendy Velázquez Cerón.</span>
+                    </li>
+                </ul>
+            </div>
+
+        </main>
+
+        <footer>
+            <p class="footnote">* Arreglo: DTI Óscar Cárdenas</p>
+            <p>¡Gracias por su asistencia y apoyo a las artes!</p>
+            <p class="credits">Concierto de Fin de Cursos 2025-2026 B</p>
+        </footer>
+    </div>
+
+    <!-- SCRIPT PARA GENERAR PDF -->
+    <script>
+        function descargarPDF() {
+            // Elemento a convertir
+            const elemento = document.getElementById('contenido-pdf');
+            
+            // Configuración del PDF
+            const configuracion = {
+                margin: [10, 10, 10, 10],
+                filename: 'Programa-Concierto-2025-2026-B.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    logging: false,
+                    letterRendering: true
+                },
+                jsPDF: { 
+                    unit: 'mm', 
+                    format: 'a4', 
+                    orientation: 'portrait',
+                    compress: true
+                }
+            };
+
+            // Cambiar texto del botón durante la carga
+            const boton = document.querySelector('.btn-download');
+            const textoOriginal = boton.innerHTML;
+            boton.innerHTML = `
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                </svg>
+                Generando PDF...
+            `;
+            boton.disabled = true;
+            boton.style.opacity = '0.7';
+
+            // Generar y descargar PDF
+            html2pdf().set(configuracion).from(elemento).save().then(() => {
+                // Restaurar botón
+                boton.innerHTML = textoOriginal;
+                boton.disabled = false;
+                boton.style.opacity = '1';
+            }).catch((error) => {
+                console.error('Error al generar PDF:', error);
+                alert('Hubo un error al generar el PDF. Por favor, intenta de nuevo.');
+                boton.innerHTML = textoOriginal;
+                boton.disabled = false;
+                boton.style.opacity = '1';
+            });
+        }
+    </script>
+
+</body>
+</html>
