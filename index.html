@@ -17,7 +17,7 @@
         /* --- ESTILOS GENERALES --- */
         :root {
             --bg-color: #121212;
-            --card-bg: rgba(25, 25, 25, 0.70); /* ← MÁS TRANSPARENTE (70%) */
+            --card-bg: rgba(25, 25, 25, 0.70);
             --text-primary: #f5f5f5;
             --text-secondary: #b0b0b0;
             --accent-color: #d4af37;
@@ -40,7 +40,7 @@
             min-height: 100vh;
         }
 
-        /* --- FONDO CON IMAGEN VISIBLE --- */
+        /* --- FONDO CON IMAGEN SUTIL --- */
         body::before {
             content: "";
             position: fixed;
@@ -52,16 +52,16 @@
             background-size: cover;
             background-position: center top;
             background-attachment: fixed;
-            opacity: 0.35; /* ← MÁS VISIBLE (35%) */
+            opacity: 0.35;
             z-index: -1;
-            filter: blur(2px); /* ← DESENFOQUE REDUCIDO */
+            filter: blur(2px);
         }
 
         .container {
             max-width: 800px;
             margin: 0 auto;
             background-color: var(--card-bg);
-            backdrop-filter: blur(4px); /* ← DESENFOQUE DEL CONTENEDOR REDUCIDO */
+            backdrop-filter: blur(4px);
             -webkit-backdrop-filter: blur(4px);
             border-radius: 12px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
@@ -138,7 +138,7 @@
             border-left: 4px solid var(--accent-color);
             border-right: 4px solid var(--accent-color);
             padding: 20px;
-            margin: 20px auto;
+            margin: 0 auto 25px auto;
             max-width: 600px;
             border-radius: 8px;
         }
@@ -151,6 +151,17 @@
 
         .event-details strong {
             color: var(--accent-color);
+        }
+
+        /* --- IMAGEN EXPLÍCITA (BANNER) --- */
+        .banner-image {
+            width: 100%;
+            max-height: 350px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-top: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         /* --- PROGRAMA --- */
@@ -382,7 +393,7 @@
 
             .event-details {
                 padding: 15px;
-                margin: 15px 10px;
+                margin: 0 10px 20px 10px;
             }
 
             .event-details p {
@@ -393,6 +404,10 @@
                 font-size: 1rem;
                 padding: 12px;
                 margin: 15px 0;
+            }
+            
+            .banner-image {
+                max-height: 250px; /* Un poco más pequeña en celular para no ocupar toda la pantalla */
             }
         }
     </style>
@@ -419,6 +434,9 @@
                 <p><strong>🕐 Horarios:</strong> 11:00 h y 13:00 h</p>
                 <p><strong>📍 Lugar:</strong> Salón de Música</p>
             </div>
+
+            <!-- IMAGEN EXPLÍCITA COMO BANNER -->
+            <img src="portada.jpg" alt="Imagen alusiva al Concierto de Fin de Cursos" class="banner-image">
         </header>
 
         <main>
