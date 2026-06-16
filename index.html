@@ -244,6 +244,12 @@
             color: var(--text-primary);
         }
 
+        /* Color dorado para los asteriscos de las piezas */
+        .asterisk {
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
         .piece-composer {
             font-size: 0.95rem;
             color: var(--text-secondary);
@@ -258,25 +264,26 @@
             font-style: italic;
         }
 
-        .solo-performer {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem;
-            color: var(--accent-color);
-            margin: 20px 0;
-            padding: 15px;
-            background-color: rgba(212, 175, 55, 0.15);
-            border-radius: 8px;
-            border: 1px solid var(--accent-color);
-            font-style: italic;
-        }
-
-        .group-performers {
+        /* --- CAJAS DE INTÉRPRETES UNIFICADAS --- */
+        .performer-box {
             background-color: rgba(37, 37, 37, 0.5);
             padding: 25px;
             border-radius: 8px;
-            margin-top: 30px;
+            margin: 30px 0;
             border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .performer-box-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-style: italic;
+        }
+
+        .performer-box-title.single {
+            margin-bottom: 0; /* Para cuando solo hay una línea de texto */
         }
 
         .group-performers h3 {
@@ -430,10 +437,13 @@
                 font-size: 0.95rem;
             }
 
-            .solo-performer {
-                font-size: 1rem;
-                padding: 12px;
-                margin: 15px 0;
+            .performer-box {
+                padding: 20px;
+                margin: 20px 0;
+            }
+
+            .performer-box-title, .group-performers h3 {
+                font-size: 1.1rem;
             }
             
             .banner-image {
@@ -526,7 +536,7 @@
 
             <div class="piece">
                 <div class="piece-info">
-                    <div class="piece-title">III. *Pink Panther Theme</div>
+                    <div class="piece-title">III. <span class="asterisk">*</span>Pink Panther Theme</div>
                     <div class="piece-composer">Henry Mancini</div>
                 </div>
             </div>
@@ -538,19 +548,21 @@
                 </div>
             </div>
             
-            <div class="solo-performer">
-                Interpreta: Pamela Viridiana Herrera Rosales, piano.
+            <!-- CAJA UNIFICADA PARA PAMELA -->
+            <div class="performer-box">
+                <p class="performer-box-title single">Interpreta: Pamela Viridiana Herrera Rosales, piano.</p>
             </div>
 
             <div class="piece">
                 <div class="piece-info">
-                    <div class="piece-title">V. *Devuélveme a mi Chica</div>
+                    <div class="piece-title">V. <span class="asterisk">*</span>Devuélveme a mi Chica</div>
                     <div class="piece-composer">David Summers (Hombres G)</div>
                 </div>
             </div>
 
-            <div class="group-performers">
-                <h3>Interpretan el grupo 611 y S613 del curso de música 2:</h3>
+            <!-- CAJA UNIFICADA PARA EL GRUPO -->
+            <div class="performer-box">
+                <h3 class="performer-box-title">Interpretan el grupo 611 y S613 del curso de música 2:</h3>
                 <ul class="instrument-list">
                     <li>
                         <span class="instrument-name">🥁 Batería:</span>
@@ -582,9 +594,9 @@
         </main>
 
         <footer>
-            <p class="footnote">* Arreglo: DTI Óscar Cárdenas</p>
+            <p class="footnote"><span class="asterisk">*</span> Arreglo: DTI Óscar Cárdenas</p>
             
-            <p class="thank-you">¡Gracias por su asistencia y apoyo a la educación musical!</p>
+            <p class="thank-you">¡Gracias por su asistencia y apoyo a las artes!</p>
             
             <div class="credits">
                 <p class="credits-title">Directorio</p>
